@@ -1,0 +1,252 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<style>
+body{
+	text-size:1.5em;
+	box-sizing:border-box;
+}
+li{
+	list-style-type:none;
+}
+.div_flex{
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction:row;
+	justify-content:space-between;
+}
+.flex_column{
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction:column;
+}
+.is_detail{
+	max-width:400px;
+	background:Gainsboro;
+	color:dimgray;
+	padding:5px 10px;
+	margin:0.3em 0.3em 0 0;
+	font-size:1.3em;
+}
+.is_detail:hover,.is_type:hover{
+	outline:1px solid sandybrown;
+	cursor:pointer;
+}
+.is_type:before{
+	content:"\1f511\00a0";
+}
+.is_detail:before{
+	content:"\2666\00a0";
+	color:Maroon;
+}
+.div_fix{
+	position:fixed;
+	top:-100px;
+	z-index:-5;
+}
+.is_type{
+	background:gray;
+	color:ivory;
+	max-width:400px;
+	padding:5px 10px;
+}
+#Is_comma:after{
+	content:" (逗号)";
+}
+#Is_period:after{
+	content:" (句号)";
+}
+#Is_colon:after{
+	content:" (冒号)";
+}
+#Is_parenthesis:after{
+	content:" (括号)";
+}
+#Is_square_par:after{
+	content:" (方括号)";
+}
+#Is_quotation:after{
+	content:" (引号)";
+}
+#Is_question:after{
+	content:" (问号)";
+}
+#Is_CN_pause_stop:after{
+	content:" (顿号)";
+}
+.2_detail{
+	font-size:1.2em;
+}
+.is_copy{
+	display:inline-block;
+	padding:2px 10px;
+	background:#e0e0e0;
+	color:red;
+}
+.is_copy:hover{
+	cursor:pointer;
+	outline:1px solid red;
+}
+</style>
+<script>
+$(function(){
+	$(".is_detail").dblclick(function(){
+		$("#text_area").val(this.textContent);
+          $("#text_area").select();
+          document.execCommand("Copy");
+	});
+	$(".is_type").click(function(){
+		$(this).siblings(".is_detail").toggle();
+		$(this).siblings(".2_detail").toggle();
+	});
+	$(".is_copy").dblclick(function(){
+		$("#text_area").val(this.textContent);
+          $("#text_area").select();
+          document.execCommand("Copy");
+	});
+});
+
+</script>
+<body>
+
+<div id="container">
+<div class="div_fix" ><textarea id="text_area" >CopyArea</textarea></div>
+
+<div class="div_flex" id="Line_01">
+
+<div class="flex_column"  >
+<div class="is_type"  >---- 相关规则----<font color="lime">Pass Score : 94%</font></div>
+<!--
+//2020 pass score:99.75% penalty:  minor:0.5; major:1; critical:2
+//2021 pass score:94.63% penalty:  minor:1; major:2.5; critical:50
+//email:2021-08-06|| Reminder: ATMS Scoring Instructions
+-->
+<div class="2_detail"  >1. <strong>内容可联动的重复错误：</strong>只对第一个错误填写 penalty，注释中添加"<div class="is_copy">fixed globally</div>"，其他系统会自动填写，无需再逐个添加注释.</div>
+<div class="2_detail" >2.<strong> 内容<font color="red">不</font>可联动的重复错误：</strong>只对第一个错误填写 penalty/comments，其他错误修改正确，Penalty-None，comments + "<div class="is_copy">Repeated error</div>"</div>
+<div class="2_detail"  >3. <strong>内容中含有4个以下错误：</strong>只标记一个错误 (penalty/comments)，但全都修改</div>
+<div class="2_detail"  >4. <strong>内容中含有5个以上错误：</strong>对每个错误分别都标记(penalty/comments)</div>
+</div>
+
+
+</div><!--line 01-->
+
+<hr>
+
+<div class="div_flex" id="Line_02">
+
+<div class="flex_column"  >
+<div class="is_type"  >---- Unidiomatic</div>
+<div class="is_detail"  >Unidiomatic</div>
+<div class="is_detail"  >Readability could be improved</div>
+<div class="is_detail"  >Contextual fluency could be improved</div>
+<div class="is_detail"  >Awkward expression</div>
+<div class="is_detail"  >Kind of confusing with awkward expressions</div>
+<div class="is_detail"  >Passive voice could be avoided.</div>
+<div class="is_detail"  >Unnatural expression</div>
+<div class="is_detail"  >Redundant expression</div>
+<div class="is_detail"  >Fluency could be improved</div>
+<div class="is_detail"  >Readability could be impropved</div>
+<div class="is_detail"  >Awkward expression</div>
+<div class="is_detail"  >Unidiomatic with literal translation</div>
+<div class="is_detail"  >Unidiomatic with grammatical issue: improper subject of action</div>
+<div class="is_detail"  >Kind of redundant with too many "您" used in the same sentence</div>
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- mistranslation</div>
+<div class="is_detail"  >Not accurate enough</div>
+<div class="is_detail"  >Not accurate enough with improper tense</div>
+<div class="is_detail"  >Expression could be adjusted to be more accurate</div>
+<div class="is_detail"  >Meaning reversed without checking the context</div>
+<div class="is_detail"  >Inaccurate expression</div>
+<div class="is_detail"  >Inaccurate with awkward expression</div>
+<div class="is_detail"  >Inaccurate translation without checking the context</div>
+<div class="is_detail"  >Illogical translation</div>
+<div class="is_detail"  >literal translation</div>
+<div class="is_detail"  >Meaning deviated</div>
+<div class="is_detail"  >Expression could be adjusted to be clearer</div>
+<div class="is_detail"  >Overtranslation</div>
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- punctuation</div>
+<div class="is_detail"  >English punctuation</div>
+<div class="is_detail" id="Is_comma" >English comma</div>
+<div class="is_detail" id="Is_colon">English colon</div>
+<div class="is_detail" id="Is_period">English period</div>
+<div class="is_detail" id="Is_question">English question marks</div>
+<div class="is_detail" id="Is_parenthesis">English parenthesis</div>
+<div class="is_detail" id="Is_square_par">square brackets</div>
+<div class="is_detail" id="Is_quotation" >unpaired quotation marks</div>
+<div class="is_detail" id="Is_CN_pause_stop" >Should use Chinese pause stop '、' for enumeration</div>
+<div class="is_detail"  >Punctuation usage not following Chinese grammar</div>
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- space</div>
+<div class="is_detail"  >Extra space</div>
+<div class="is_detail"  >Necessary space missing between Chinese and English characters</div>
+<div class="is_detail"  >Necessary space missing between Chinese characters and single-byte punctuation</div>
+<div class="is_type"  >---- DNT</div>
+<div class="is_detail"  >Keep intact</div>
+<div class="is_detail"  >DNT</div>
+<div class="is_type"  >---- tags/links</div>
+<div class="is_detail"  >Keep tags intact</div>
+<div class="is_detail"  >Misplacement of the tag</div>
+<div class="is_detail"  >Improper formatting of UI element"</div>
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- term & consistency</div>
+<div class="is_detail"  >Inconsistent expression</div>
+<div class="is_detail"  >Term error</div>
+<div class="is_detail"  >Inconsistent translation used for the same sentence/context</div>
+<div class="is_detail"  >Translation does not conform to TB, nor is it consistent across file</div>
+<div class="is_detail"  ><font color="red">Acronym</font> should not be used here without description in the context. </div>
+</div>
+
+<div class="flex_column"  >
+
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- global check ----</div>
+<div class="is_detail"  >Please do a global check for similar cases by searching for "XXXX".</div>
+<div class="is_detail"  >Please do a global check for this term in case.</div>
+<div class="is_detail"  >Please do a global check for "XXX" to avoid this kind of unnatural expression.</div>
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- reviewer suggestion ----</div>
+<div class="is_detail"  >Please pay attention to the details when translating.               </div>
+<div class="is_detail"  >More attention is needed on logical and expression issues.              </div>
+<div class="is_detail"  >Both accuracy and fluency could be further improved. And more attention is needed on issues caused by literal translation.</div>
+<div class="is_detail"  >More attention is needed on expression issues, especially those impacting accuracy.</div>
+</div>
+
+<div class="flex_column"  >
+<div class="is_type"  >---- reviewer rating ----</div>
+<div class="is_detail"  >Good on the whole with several minor issues.          </div>
+<div class="is_detail"  >The overall quality is acceptable.        </div>
+<div class="is_detail"  >The overall quality is average.       </div>
+<div class="is_detail"  ></div>
+</div>
+
+</div><!--line 02-->
+
+<hr>
+
+<div><hr dec="line03"></div>
+
+
+</div><!--line 03-->
+
+
+
+</div><!--container-->
+
+
+</body>
+</html>
